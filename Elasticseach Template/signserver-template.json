@@ -1,0 +1,53 @@
+{
+  "signserver-template" : {
+    "order" : 0,
+    "index_patterns" : [
+      "signserver-*"
+    ],
+    "settings" : {
+      "index" : {
+        "number_of_shards" : "1"
+      }
+    },
+    "mappings" : {
+      "_routing" : {
+        "required" : false
+      },
+      "numeric_detection" : false,
+      "dynamic_date_formats" : [
+        "strict_date_optional_time",
+        "yyyy/MM/dd HH:mm:ss Z||yyyy/MM/dd Z"
+      ],
+      "_meta" : { },
+      "dynamic" : true,
+      "_source" : {
+        "excludes" : [ ],
+        "includes" : [ ],
+        "enabled" : true
+      },
+      "dynamic_templates" : [ ],
+      "date_detection" : true,
+      "properties" : {
+        "signserver" : {
+          "type" : "object",
+          "properties" : {
+            "worker" : {
+              "type" : "object",
+              "properties" : {
+                "geoip" : {
+                  "type" : "object",
+                  "properties" : {
+                    "location" : {
+                      "type" : "geo_point"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "aliases" : { }
+  }
+}
